@@ -114,10 +114,14 @@
 	filter: alpha(opacity=100);
 	opacity: 1;
 }
-.instructions {
+
+.instructions, .instructions .well {
     margin-top: 1em;
 }
 
+.is-hidden {
+    display: none;
+}
 </style>
 </head>
 <body>
@@ -125,6 +129,12 @@
         <h1 class="text-center">Interval Trainer (Beta)</h1>
         <p class="lead text-center">
             This interval training exercise will help you identify intervals over chord progressions in the key of C.</p>
+            <div class="alert alert-warning alert-dismissible js-alert-box is-hidden" role="alert">
+              <button type="button" class="close js-alert-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="js-alert-text">
+                  
+              </div>
+            </div>
             <div class="text-center">
                 <div class="controls">
                     <div class="controls-chords controls-group pull-left">
@@ -134,7 +144,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="chords-add-btn btn btn-default btn-sm js-chords-add-btn">Add</button>
+                            <!-- <button class="chords-add-btn btn btn-default btn-sm js-chords-add-btn">Add</button> -->
                             <button class="chords-remove-btn btn btn-primary btn-sm js-chords-remove-btn">Remove Last</button>
                         </div>
                         <div class="chords-list white form-group js-chords-list">
@@ -156,18 +166,28 @@
                         <div class="form-group">
                             <button class="start-btn btn btn-default btn-sm js-start-btn">Play</button>
                             <button class="stop-btn btn btn-primary btn-sm js-stop-btn">Stop</button>
+                            <button class="rewind-btn btn btn-primary btn-sm js-rewind-btn">Rewind</button>
                         </div>
                         <div class="form-group">
                             <div class="checkbox white">
                                 <div class="checkbox-round">
-                                	<input type="checkbox" value="None" id="checkbox-round" name="check" class="checkbox-round js-loop-checkbox">
-                                	<label for="checkbox-round"></label>
+                                	<input type="checkbox" id="loop" name="loop" class="checkbox-round js-loop-checkbox">
+                                	<label for="loop"></label>
                                 </div>
                                 <span>Loop</span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="checkbox white">
+                                <div class="checkbox-round">
+                                	<input type="checkbox" id="show_note" checked name="show_note" class="checkbox-round js-show-note-checkbox">
+                                	<label for="show_note"></label>
+                                </div>
+                                <span>Show Current Note</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="current-note-container">
+                    <div class="current-note-container js-current-note-container">
                         <span>Current Note:</span>
                         <div class="current-note-box js-current-note-box">
                             &nbsp;
@@ -180,12 +200,13 @@
             </div>
             <div class="instructions">
                 <div class="text-center">
-                    <a href="#">Instructions</a>
+                    <a href="#" class="js-instructions-link">Instructions</a>
                 </div>
-                <div class="well hidden">
+                <div class="well js-instructions-box is-hidden">
                         <p>First, create a chord progession by selecting a chord from the "<b>Select Chord...</b>" dropdown list, and clicking "<b>Add</b>." You can make the progression as long or as short as you'd like, and you can loop it by clicking the "<b>Loop</b>" checkbox.</p>
-                       <p> Next, select a division from the "<b>Select Division...</b>" dropdown list ("<b>whole</b>" is a good starting point), adjust the tempo, and click "<b>Play</b>." If you'd like to hide the current note from view, uncheck the "<b>Show Current Note</b>" checkbox. <i>Have fun</i>! 
+                       <p> Next, select a division from the "<b>Select Division...</b>" dropdown list ("<b>whole</b>" is a good starting point), adjust the tempo, and click "<b>Play</b>." If you'd like to hide the current note from view, uncheck the "<b>Show Current Note</b>" checkbox. 
                     </p>
+                    <p><i>Have fun</i>!</p>
                 </div>
             </div>
     </div>
